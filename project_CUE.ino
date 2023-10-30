@@ -61,11 +61,11 @@ void setup()
   intro();
 
   Serial.begin(115200);
-
-  if (!SD.begin(53)) 
-    {
-      while (1);
-    }
+  
+  // if (!SD.begin(53)) 
+  // {
+  //   while (1);
+  // }
   
   if(SD.exists(filename))
   {
@@ -74,7 +74,7 @@ void setup()
     file.close();
     SD.remove(filename);
   }
-  
+
   file = SD.open(filename, FILE_WRITE);
   serializeJson(doc, file);
   file.close();
@@ -82,10 +82,10 @@ void setup()
 
 void loop() 
 {
-  if (!SD.begin(53)) 
-  {
-    while (1);
-  }
+  // if (!SD.begin(53)) 
+  // {
+  //   while (1);
+  // }
   
   point_Events();
 }
@@ -491,8 +491,8 @@ void point_Events()
     }
   }
   
-  int buttonVal = digitalRead(KEYin);                                      //버튼
-  if(buttonVal == LOW)
+  int buttonVal = digitalRead(2);                                      //버튼
+  if(buttonVal == HIGH)
   {
     if(page == 1)
     {
@@ -903,789 +903,855 @@ int notemake(int n, int o, int h)
 {
   int note_;
 
-  switch(n)
+  int x = 0;
+
+  if(h == 0)
   {
-    case 0: {
-      break;
-    }
-    case 1: {
-      switch(o)
-      {
-        case 1: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 33;
-              break;
-            }
-            case 1:
-            {
-              note_ = 35;
-              break;
-            }
-          }
-          break;
-        }
-        case 2: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 65;
-              break;
-            }
-            case 1:
-            {
-              note_ = 69;
-              break;
-            }
-          }
-          break;
-        }
-        case 3: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 131;
-              break;
-            }
-            case 1:
-            {
-              note_ = 139;
-              break;
-            }
-          }
-          break;
-        }
-        case 4: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 262;
-              break;
-            }
-            case 1:
-            {
-              note_ = 277;
-              break;
-            }
-          }
-          break;
-        }
-        case 5: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 523;
-              break;
-            }
-            case 1:
-            {
-              note_ = 554;
-              break;
-            }
-          }
-          break;
-        }
-        case 6: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 1047;
-              break;
-            }
-            case 1:
-            {
-              note_ = 1109;
-              break;
-            }
-          }
-          break;
-        }
-        case 7: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 2093;
-              break;
-            }
-            case 1:
-            {
-              note_ = 2217;
-              break;
-            }
-          }
-          break;
-        }
+    switch(n)
+    {
+      case 0: {
+        break;
       }
-      break;
-    }
-    case 2: {
-      switch(o)
-      {
-        case 1: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 37;
-              break;
-            }
-            case 1:
-            {
-              note_ = 39;
-              break;
-            }
-          }
-          break;
-        }
-        case 2: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 73;
-              break;
-            }
-            case 1:
-            {
-              note_ = 78;
-              break;
-            }
-          }
-          break;
-        }
-        case 3: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 147;
-              break;
-            }
-            case 1:
-            {
-              note_ = 156;
-              break;
-            }
-          }
-          break;
-        }
-        case 4: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 294;
-              break;
-            }
-            case 1:
-            {
-              note_ = 311;
-              break;
-            }
-          }
-          break;
-        }
-        case 5: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 587;
-              break;
-            }
-            case 1:
-            {
-              note_ = 622;
-              break;
-            }
-          }
-          break;
-        }
-        case 6: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 1175;
-              break;
-            }
-            case 1:
-            {
-              note_ = 1245;
-              break;
-            }
-          }
-          break;
-        }
-        case 7: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 2349;
-              break;
-            }
-            case 1:
-            {
-              note_ = 2489;
-              break;
-            }
-          }
-          break;
-        }
+      case 1: {
+        x = 1;
       }
-      break;
-    }
-    case 3: {
-      switch(o)
-      {
-        case 1: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 41;
-              break;
-            }
-            case 1:
-            {
-              note_ = 44;
-              break;
-            }
-          }
-          break;
-        }
-        case 2: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 82;
-              break;
-            }
-            case 1:
-            {
-              note_ = 87;
-              break;
-            }
-          }
-          break;
-        }
-        case 3: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 165;
-              break;
-            }
-            case 1:
-            {
-              note_ = 175;
-              break;
-            }
-          }
-          break;
-        }
-        case 4: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 330;
-              break;
-            }
-            case 1:
-            {
-              note_ = 349;
-              break;
-            }
-          }
-          break;
-        }
-        case 5: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 659;
-              break;
-            }
-            case 1:
-            {
-              note_ = 698;
-              break;
-            }
-          }
-          break;
-        }
-        case 6: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 1319;
-              break;
-            }
-            case 1:
-            {
-              note_ = 1397;
-              break;
-            }
-          }
-          break;
-        }
-        case 7: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 2637;
-              break;
-            }
-            case 1:
-            {
-              note_ = 2794;
-              break;
-            }
-          }
-          break;
-        }
+      case 2: {
+        x = 3;
       }
-      break;
-    }
-    case 4: {
-      switch(o)
-      {
-        case 1: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 44;
-              break;
-            }
-            case 1:
-            {
-              note_ = 46;
-              break;
-            }
-          }
-          break;
-        }
-        case 2: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 87;
-              break;
-            }
-            case 1:
-            {
-              note_ = 93;
-              break;
-            }
-          }
-          break;
-        }
-        case 3: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 175;
-              break;
-            }
-            case 1:
-            {
-              note_ = 185;
-              break;
-            }
-          }
-          break;
-        }
-        case 4: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 349;
-              break;
-            }
-            case 1:
-            {
-              note_ = 370;
-              break;
-            }
-          }
-          break;
-        }
-        case 5: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 698;
-              break;
-            }
-            case 1:
-            {
-              note_ = 740;
-              break;
-            }
-          }
-          break;
-        }
-        case 6: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 1397;
-              break;
-            }
-            case 1:
-            {
-              note_ = 1480;
-              break;
-            }
-          }
-          break;
-        }
-        case 7: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 2794;
-              break;
-            }
-            case 1:
-            {
-              note_ = 2960;
-              break;
-            }
-          }
-          break;
-        }
+      case 3: {
+        x = 5;
       }
-      break;
-    }
-    case 5: {
-      switch(o)
-      {
-        case 1: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 49;
-              break;
-            }
-            case 1:
-            {
-              note_ = 52;
-              break;
-            }
-          }
-          break;
-        }
-        case 2: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 98;
-              break;
-            }
-            case 1:
-            {
-              note_ = 104;
-              break;
-            }
-          }
-          break;
-        }
-        case 3: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 196;
-              break;
-            }
-            case 1:
-            {
-              note_ = 208;
-              break;
-            }
-          }
-          break;
-        }
-        case 4: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 392;
-              break;
-            }
-            case 1:
-            {
-              note_ = 415;
-              break;
-            }
-          }
-          break;
-        }
-        case 5: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 784;
-              break;
-            }
-            case 1:
-            {
-              note_ = 831;
-              break;
-            }
-          }
-          break;
-        }
-        case 6: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 1568;
-              break;
-            }
-            case 1:
-            {
-              note_ = 1661;
-              break;
-            }
-          }
-          break;
-        }
-        case 7: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 3136;
-              break;
-            }
-            case 1:
-            {
-              note_ = 3322;
-              break;
-            }
-          }
-          break;
-        }
+      case 5: {
+        x = 6;
       }
-      break;
-    }
-    case 6: {
-      switch(o)
-      {
-        case 1: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 55;
-              break;
-            }
-            case 1:
-            {
-              note_ = 58;
-              break;
-            }
-          }
-          break;
-        }
-        case 2: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 110;
-              break;
-            }
-            case 1:
-            {
-              note_ = 117;
-              break;
-            }
-          }
-          break;
-        }
-        case 3: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 220;
-              break;
-            }
-            case 1:
-            {
-              note_ = 233;
-              break;
-            }
-          }
-          break;
-        }
-        case 4: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 440;
-              break;
-            }
-            case 1:
-            {
-              note_ = 466;
-              break;
-            }
-          }
-          break;
-        }
-        case 5: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 880;
-              break;
-            }
-            case 1:
-            {
-              note_ = 932;
-              break;
-            }
-          }
-          break;
-        }
-        case 6: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 1760;
-              break;
-            }
-            case 1:
-            {
-              note_ = 1865;
-              break;
-            }
-          }
-          break;
-        }
-        case 7: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 3520;
-              break;
-            }
-            case 1:
-            {
-              note_ = 3729;
-              break;
-            }
-          }
-          break;
-        }
+      case 6: {
+        x = 8;
       }
-      break;
-    }
-    case 7: {
-      switch(o)
-      {
-        case 1: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 62;
-              break;
-            }
-            case 1:
-            {
-              note_ = 65;
-              break;
-            }
-          }
-          break;
-        }
-        case 2: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 123;
-              break;
-            }
-            case 1:
-            {
-              note_ = 131;
-              break;
-            }
-          }
-          break;
-        }
-        case 3: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 247;
-              break;
-            }
-            case 1:
-            {
-              note_ = 262;
-              break;
-            }
-          }
-          break;
-        }
-        case 4: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 494;
-              break;
-            }
-            case 1:
-            {
-              note_ = 523;
-              break;
-            }
-          }
-          break;
-        }
-        case 5: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 988;
-              break;
-            }
-            case 1:
-            {
-              note_ = 1047;
-              break;
-            }
-          }
-          break;
-        }
-        case 6: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 1976;
-              break;
-            }
-            case 1:
-            {
-              note_ = 2093;
-              break;
-            }
-          }
-          break;
-        }
-        case 7: {
-          switch(h)
-          {
-            case 0: {
-              note_ = 3951;
-              break;
-            }
-            case 1:
-            {
-              note_ = 4186;
-              break;
-            }
-          }
-          break;
-        }
+      case 7: {
+        x = 10;
       }
-      break;
+      case 8: {
+        x = 12;
+      }
     }
   }
+  else
+  {
+    switch(n)
+    {
+      case 0: {
+        break;
+      }
+      case 1: {
+        x = 2;
+      }
+      case 2: {
+        x = 4;
+      }
+      case 3: {
+        x = 5;
+      }
+      case 5: {
+        x = 6;
+      }
+      case 6: {
+        x = 9;
+      }
+      case 7: {
+        x = 11;
+      }
+      case 8: {
+        o++;
+        x = 1;
+      }
+    }
+  }
+
+  note_ = 2^(o-1) * 55 * 2^{(x-10)/12};
+
+  // switch(n)
+  // {
+  //   case 0: {
+  //     break;
+  //   }
+  //   case 1: {
+  //     switch(o)
+  //     {
+  //       case 1: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 33;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 35;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 2: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 65;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 69;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 3: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 131;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 139;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 4: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 262;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 277;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 5: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 523;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 554;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 6: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 1047;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 1109;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 7: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 2093;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 2217;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //     }
+  //     break;
+  //   }
+  //   case 2: {
+  //     switch(o)
+  //     {
+  //       case 1: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 37;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 39;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 2: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 73;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 78;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 3: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 147;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 156;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 4: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 294;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 311;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 5: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 587;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 622;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 6: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 1175;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 1245;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 7: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 2349;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 2489;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //     }
+  //     break;
+  //   }
+  //   case 3: {
+  //     switch(o)
+  //     {
+  //       case 1: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 41;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 44;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 2: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 82;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 87;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 3: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 165;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 175;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 4: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 330;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 349;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 5: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 659;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 698;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 6: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 1319;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 1397;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 7: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 2637;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 2794;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //     }
+  //     break;
+  //   }
+  //   case 4: {
+  //     switch(o)
+  //     {
+  //       case 1: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 44;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 46;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 2: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 87;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 93;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 3: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 175;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 185;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 4: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 349;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 370;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 5: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 698;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 740;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 6: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 1397;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 1480;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 7: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 2794;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 2960;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //     }
+  //     break;
+  //   }
+  //   case 5: {
+  //     switch(o)
+  //     {
+  //       case 1: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 49;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 52;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 2: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 98;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 104;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 3: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 196;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 208;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 4: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 392;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 415;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 5: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 784;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 831;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 6: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 1568;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 1661;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 7: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 3136;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 3322;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //     }
+  //     break;
+  //   }
+  //   case 6: {
+  //     switch(o)
+  //     {
+  //       case 1: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 55;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 58;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 2: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 110;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 117;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 3: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 220;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 233;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 4: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 440;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 466;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 5: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 880;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 932;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 6: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 1760;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 1865;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 7: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 3520;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 3729;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //     }
+  //     break;
+  //   }
+  //   case 7: {
+  //     switch(o)
+  //     {
+  //       case 1: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 62;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 65;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 2: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 123;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 131;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 3: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 247;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 262;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 4: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 494;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 523;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 5: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 988;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 1047;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 6: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 1976;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 2093;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //       case 7: {
+  //         switch(h)
+  //         {
+  //           case 0: {
+  //             note_ = 3951;
+  //             break;
+  //           }
+  //           case 1:
+  //           {
+  //             note_ = 4186;
+  //             break;
+  //           }
+  //         }
+  //         break;
+  //       }
+  //     }
+  //     break;
+  //   }
+  // }
 
   return note_;  
 }
